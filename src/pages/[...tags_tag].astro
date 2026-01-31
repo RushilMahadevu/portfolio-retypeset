@@ -1,9 +1,9 @@
 ---
-import PostList from '@/components/PostList.astro'
+import CombinedContentList from '@/components/CombinedContentList.astro'
 import TagList from '@/components/TagList.astro'
 import { defaultLocale, moreLocales } from '@/config'
 import Layout from '@/layouts/Layout.astro'
-import { getAllTags, getPostsByTag, getTagSupportedLangs } from '@/utils/content'
+import { getAllCombinedTags, getCombinedTagSupportedLangs, getContentByTag, getPosts, getProjects } from '@/utils/content'
 
 export async function getStaticPaths() {
   type PathItem = {
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
   const paths: PathItem[] = []
 
   // Default locale
-  const defaultTags = await getAllTags(defaultLocale)
+  const defaultTags = await getAllCombinedTags(defaultLocale)
   defaultTags.forEach((tag: string) => {
     paths.push({
       params: { tags_tag: `tags/${tag}/` },
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 
   // More locales
   for (const lang of moreLocales) {
-    const langTags = await getAllTags(lang)
+    const langTags = await getAllCombinedTags(lang)
     langTags.forEach((tag: string) => {
       paths.push({
         params: { tags_tag: `${lang}/tags/${tag}/` },
@@ -37,25 +37,78 @@ export async function getStaticPaths() {
 }
 
 const { tag, lang } = Astro.props
-const posts = await getPostsByTag(tag, lang)
-const allTags = await getAllTags(lang)
-const supportedLangs = await getTagSupportedLangs(tag)
+const { posts, projects } = await getContentByTag(tag, lang)
+const supportedLangs = await getCombinedTagSupportedLangs(tag)
+
+// Get categorized tags for the header
+const [allPosts, allProjects] = await Promise.all([
+  getPosts(lang),
+  getProjects(lang),
+])
+
+const topicTags = [...new Set([
+  ...allPosts.flatMap(post => post.data.tags?.topics || []),
+  ...allProjects.flatMap(project => project.data.tags?.topics || []),
+])].sort()
+
+const projectTags = [...new Set([
+  ...allPosts.flatMap(post => post.data.tags?.projects || []),
+  ...allProjects.flatMap(project => project.data.tags?.projects || []),
+])].sort()
+
+const typeTags = [...new Set([
+  ...allPosts.flatMap(post => post.data.tags?.types || []),
+  ...allProjects.flatMap(project => project.data.tags?.types || []),
+])].sort()
 ---
 
 <Layout supportedLangs={supportedLangs}>
-  <!-- Decorative Line -->
+  <!-- First Bar: Topics & Projects -->
   <div class="uno-decorative-line" />
-  <!-- Tag List -->
-  <TagList
-    tags={allTags}
-    currentTag={tag}
-    lang={lang}
-  />
+  <div class="grid grid-cols-1 mb-8 gap-8 md:grid-cols-2">
+    <!-- Topics -->
+    <div>
+      <h2 class="mb-4 text-xl text-gray-700 font-semibold dark:text-gray-300">Topics</h2>
+      {topicTags.length > 0
+? (
+        <TagList tags={topicTags} currentTag={tag} lang={lang} />
+      )
+: (
+        <p class="text-gray-500 italic">No topics yet</p>
+      )}
+    </div>
 
-  <!-- Posts List -->
+    <!-- Projects -->
+    <div>
+      <h2 class="mb-4 text-xl text-gray-700 font-semibold dark:text-gray-300">Projects</h2>
+      {projectTags.length > 0
+? (
+        <TagList tags={projectTags} currentTag={tag} lang={lang} />
+      )
+: (
+        <p class="text-gray-500 italic">No projects yet</p>
+      )}
+    </div>
+  </div>
+
+  <!-- Second Bar: Content Types -->
+  <div class="uno-decorative-line" />
+  <div class="mb-8">
+    <h2 class="mb-4 text-xl text-gray-700 font-semibold dark:text-gray-300">Content Types</h2>
+    {typeTags.length > 0
+? (
+      <TagList tags={typeTags} currentTag={tag} lang={lang} />
+    )
+: (
+      <p class="text-gray-500 italic">No content types yet</p>
+    )}
+  </div>
+
+  <!-- Combined Content List -->
   <div class="mt-10.5">
-    <PostList
+    <CombinedContentList
       posts={posts}
+      projects={projects}
       lang={lang}
     />
   </div>

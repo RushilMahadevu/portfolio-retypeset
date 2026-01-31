@@ -1,0 +1,54 @@
+---
+import ProjectList from '@/components/ProjectList.astro'
+import { defaultLocale, moreLocales } from '@/config'
+import Layout from '@/layouts/Layout.astro'
+import { getPinnedProjects, getProjectsByYear } from '@/utils/content'
+
+export async function getStaticPaths() {
+  type PathItem = {
+    params: { projects: string | undefined }
+    props: { lang: string }
+  }
+
+  const paths: PathItem[] = []
+
+  // Default locale
+  paths.push({
+    params: { projects: 'projects/' },
+    props: { lang: defaultLocale },
+  })
+
+  // More locales
+  moreLocales.forEach((lang: string) => {
+    paths.push({
+      params: { projects: `${lang}/projects/` },
+      props: { lang },
+    })
+  })
+
+  return paths
+}
+
+const { lang } = Astro.props
+
+const pinnedProjects = await getPinnedProjects(lang)
+const projectsByYear = await getProjectsByYear(lang)
+---
+
+<Layout>
+  <!-- Pinned Projects -->
+  {pinnedProjects.length > 0 && (
+    <section class="mb-7.5">
+      <div class="uno-decorative-line" />
+      <ProjectList projects={pinnedProjects} lang={lang} pinned={true} />
+    </section>
+  )}
+
+  <!-- Regular Projects -->
+  {[...projectsByYear.entries()].map(([_year, projects]) => (
+    <section class="mb-7.5">
+      <div class="uno-decorative-line" />
+      <ProjectList projects={projects} lang={lang} />
+    </section>
+  ))}
+</Layout>

@@ -2,7 +2,7 @@
 import TagList from '@/components/TagList.astro'
 import { defaultLocale, moreLocales } from '@/config'
 import Layout from '@/layouts/Layout.astro'
-import { getAllTags } from '@/utils/content'
+import { getAllCombinedTags, getPosts, getProjects } from '@/utils/content'
 
 export async function getStaticPaths() {
   type PathItem = {
@@ -30,13 +30,74 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.props
-const allTags = await getAllTags(lang)
+const allTags = await getAllCombinedTags(lang)
+
+// Get categorized tags
+const [posts, projects] = await Promise.all([
+  getPosts(lang),
+  getProjects(lang),
+])
+
+const topicTags = [...new Set([
+  ...posts.flatMap(post => post.data.tags?.topics || []),
+  ...projects.flatMap(project => project.data.tags?.topics || []),
+])].sort()
+
+const projectTags = [...new Set([
+  ...posts.flatMap(post => post.data.tags?.projects || []),
+  ...projects.flatMap(project => project.data.tags?.projects || []),
+])].sort()
+
+const typeTags = [...new Set([
+  ...posts.flatMap(post => post.data.tags?.types || []),
+  ...projects.flatMap(project => project.data.tags?.types || []),
+])].sort()
 ---
 
 <Layout>
-  <!-- Decorative Line -->
+  <!-- First Bar: Topics & Projects -->
   <div class="uno-decorative-line" />
-  <!-- Tag List -->
+  <div class="grid grid-cols-1 mb-8 gap-8 md:grid-cols-2">
+    <!-- Topics -->
+    <div>
+      <h2 class="mb-4 text-xl text-gray-700 font-semibold dark:text-gray-300">Topics</h2>
+      {topicTags.length > 0
+? (
+        <TagList tags={topicTags} lang={lang} />
+      )
+: (
+        <p class="text-gray-500 italic">No topics yet</p>
+      )}
+    </div>
+
+    <!-- Projects -->
+    <div>
+      <h2 class="mb-4 text-xl text-gray-700 font-semibold dark:text-gray-300">Projects</h2>
+      {projectTags.length > 0
+? (
+        <TagList tags={projectTags} lang={lang} />
+      )
+: (
+        <p class="text-gray-500 italic">No projects yet</p>
+      )}
+    </div>
+  </div>
+
+  <!-- Second Bar: Content Types -->
+  <div class="uno-decorative-line" />
+  <div class="mb-8">
+    <h2 class="mb-4 text-xl text-gray-700 font-semibold dark:text-gray-300">Content Types</h2>
+    {typeTags.length > 0
+? (
+      <TagList tags={typeTags} lang={lang} />
+    )
+: (
+      <p class="text-gray-500 italic">No content types yet</p>
+    )}
+  </div>
+
+  <!-- Third Bar: All Tags -->
+  <div class="uno-decorative-line" />
   <TagList
     tags={allTags}
     lang={lang}

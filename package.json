@@ -1,9 +1,9 @@
 {
-  "name": "astro-theme-retypeset",
+  "name": "rushil-mahadevu-portfolio",
   "type": "module",
   "version": "1.0.0",
   "packageManager": "pnpm@10.14.0",
-  "repository": "https://github.com/radishzzz/astro-theme-retypeset",
+  "repository": "https://github.com/RushilMahadevu/portfolio-retypeset",
   "scripts": {
     "dev": "astro check && astro dev",
     "build": "astro check && astro build && pnpm apply-lqip",
@@ -26,6 +26,7 @@
     "astro-og-canvas": "^0.7.0",
     "canvaskit-wasm": "^0.40.0",
     "feed": "^5.1.0",
+    "firebase": "^12.1.0",
     "katex": "^0.16.22",
     "lite-youtube-embed": "^0.3.3",
     "markdown-it": "^14.1.0",

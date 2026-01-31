@@ -1,0 +1,64 @@
+---
+import type { Post, Project } from '@/utils/content'
+import PostList from '@/components/PostList.astro'
+import ProjectList from '@/components/ProjectList.astro'
+
+export interface Props {
+  posts: Post[]
+  projects: Project[]
+  lang: string
+}
+
+const { posts, projects, lang } = Astro.props
+
+// Combine and sort all content by publication date
+const allContent = [
+  ...posts.map(post => ({ ...post, type: 'post' as const })),
+  ...projects.map(project => ({ ...project, type: 'project' as const })),
+].sort((a, b) => {
+  const dateA = new Date(a.data.published)
+  const dateB = new Date(b.data.published)
+  return dateB.getTime() - dateA.getTime()
+})
+
+// Separate back into posts and projects but maintain chronological order
+const sortedPosts: Post[] = []
+const sortedProjects: Project[] = []
+
+allContent.forEach((item) => {
+  if (item.type === 'post') {
+    sortedPosts.push(item)
+  }
+ else {
+    sortedProjects.push(item)
+  }
+})
+---
+
+{/* Show content sections only if they have items */}
+{sortedProjects.length > 0 && (
+  <div class="mb-8">
+    <h2 class="mb-4 text-2xl c-primary font-semibold">Projects</h2>
+    <ProjectList
+      projects={sortedProjects}
+      lang={lang}
+    />
+  </div>
+)}
+
+{sortedPosts.length > 0 && (
+  <div class="mb-8">
+    <h2 class="mb-4 text-2xl c-primary font-semibold">Posts</h2>
+    <PostList
+      posts={sortedPosts}
+      lang={lang}
+    />
+  </div>
+)}
+
+{/* Show message if no content found */}
+{sortedPosts.length === 0 && sortedProjects.length === 0 && (
+  <div class="py-8 text-center">
+    <p class="text-gray-500">No content found for this tag.</p>
+  </div>
+)}

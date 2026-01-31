@@ -1,0 +1,186 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getCollection, render } from 'astro:content'
+import Comment from '@/components/Comment/Index.astro'
+import PostDate from '@/components/PostDate.astro'
+import TagList from '@/components/TagList.astro'
+import BackButton from '@/components/Widgets/BackButton.astro'
+import TOC from '@/components/Widgets/TOC.astro'
+import { allLocales, defaultLocale, moreLocales } from '@/config'
+import Layout from '@/layouts/Layout.astro'
+import { getAllTagsFromCategorized } from '@/utils/content'
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects')
+
+  // Use a Map to store the relationship between project slugs and their supported languages
+  const slugToLangsMap = new Map<string, Set<string>>()
+
+  projects.forEach((project) => {
+    const slug = project.data.abbrlink || project.id
+    const lang = project.data.lang
+
+    if (!slugToLangsMap.has(slug)) {
+      slugToLangsMap.set(slug, new Set(lang ? [lang] : allLocales))
+    }
+    else if (lang) {
+      slugToLangsMap.get(slug)?.add(lang)
+    }
+  })
+
+  // Convert Map to Record structure
+  const slugToLangs: Record<string, string[]> = {}
+  for (const [slug, langs] of slugToLangsMap.entries()) {
+    slugToLangs[slug] = [...langs].sort((a, b) => allLocales.indexOf(a) - allLocales.indexOf(b))
+  }
+
+  type PathItem = {
+    params: { projects_slug: string }
+    props: { project: CollectionEntry<'projects'>, lang: string, supportedLangs: string[] }
+  }
+
+  const paths: PathItem[] = []
+
+  // Default locale
+  projects.forEach((project: CollectionEntry<'projects'>) => {
+    // Show drafts in dev mode only
+    if ((import.meta.env.DEV || !project.data.draft)
+      && (project.data.lang === defaultLocale || project.data.lang === '')) {
+      const slug = project.data.abbrlink || project.id
+
+      paths.push({
+        params: { projects_slug: `projects/${slug}/` },
+        props: {
+          project,
+          lang: defaultLocale,
+          supportedLangs: slugToLangs[slug] ?? [],
+        },
+      })
+    }
+  })
+
+  // More locales
+  moreLocales.forEach((lang: string) => {
+    projects.forEach((project: CollectionEntry<'projects'>) => {
+      // Process projects with matching language or no language specified
+      if ((import.meta.env.DEV || !project.data.draft)
+        && (project.data.lang === lang || project.data.lang === '')) {
+        const slug = project.data.abbrlink || project.id
+        paths.push({
+          params: { projects_slug: `${lang}/projects/${slug}/` },
+          props: {
+            project,
+            lang,
+            supportedLangs: slugToLangs[slug] ?? [],
+          },
+        })
+      }
+    })
+  })
+
+  return paths
+}
+
+const { project, lang, supportedLangs } = Astro.props
+const description = project.data.description || ''
+const { Content, headings, remarkPluginFrontmatter } = await render(project)
+---
+
+<Layout
+  postTitle={project.data.title}
+  postDescription={description}
+  postSlug={project.id}
+  supportedLangs={supportedLangs}
+>
+  <article class="heti">
+    <div class="relative">
+      <!-- Go Back Button On Desktop -->
+      <BackButton />
+      <!-- Title -->
+      <h1 class="post-title">
+        <span
+          transition:name={`project-${project.data.abbrlink || project.id}${lang ? `-${lang}` : ''}`}
+          data-disable-theme-transition
+        >
+          {project.data.title}
+        </span>
+      </h1>
+    </div>
+
+    <!-- Project Image -->
+    {project.data.image && (
+      <div class="mb-8">
+        <img
+          src={project.data.image}
+          alt={`${project.data.title} project image`}
+          class="h-auto w-full rounded-lg shadow-lg"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    )}
+
+    <!-- Date and Project Links -->
+    <div
+      id="project-meta"
+      class="mb-17.2 block c-primary font-time"
+      transition:name={`time-${project.data.abbrlink || project.id}${lang ? `-${lang}` : ''}`}
+      data-disable-theme-transition
+    >
+      <PostDate
+        date={project.data.published}
+        updatedDate={project.data.updated}
+        minutes={remarkPluginFrontmatter.minutes}
+      />
+      {project.data.status && (
+        <span class="ml-2">
+          · {project.data.status.replace('-', ' ')}
+        </span>
+      )}
+      {(project.data.github || project.data.demo) && (
+        <div class="mt-2 text-3.5">
+          {project.data.github && (
+            <a
+              href={project.data.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mr-4 transition-colors hover:c-primary"
+            >
+              GitHub →
+            </a>
+          )}
+          {project.data.demo && (
+            <a
+              href={project.data.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="transition-colors hover:c-primary"
+            >
+              Live Demo →
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+
+    <!-- TOC -->
+    {project.data.toc && <TOC headings={headings} />}
+
+    <!-- Content -->
+    <div id="project-content">
+      <Content />
+      <!-- Copyright -->
+      <div id="project-copyright" />
+      <!-- Tag List -->
+      {getAllTagsFromCategorized(project.data.tags).length > 0 && (
+        <div class="mt-12.6 uno-decorative-line" />
+        <TagList
+          tags={getAllTagsFromCategorized(project.data.tags)}
+          lang={lang}
+        />
+      )}
+      <!-- Comment -->
+      <Comment />
+    </div>
+  </article>
+</Layout>

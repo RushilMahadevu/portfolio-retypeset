@@ -31,6 +31,10 @@ export function isAboutPage(path: string) {
   return isPageType(path, 'about')
 }
 
+export function isProjectPage(path: string) {
+  return isPageType(path, 'projects')
+}
+
 // Returns page context with language, page types and localization helper
 export function getPageInfo(path: string) {
   const currentLang = getLangFromPath(path)
@@ -38,6 +42,7 @@ export function getPageInfo(path: string) {
   const isPost = isPostPage(path)
   const isTag = isTagPage(path)
   const isAbout = isAboutPage(path)
+  const isProject = isProjectPage(path)
 
   return {
     currentLang,
@@ -45,6 +50,7 @@ export function getPageInfo(path: string) {
     isPost,
     isTag,
     isAbout,
+    isProject,
     getLocalizedPath: (targetPath: string) =>
       getLocalizedPath(targetPath, currentLang),
   }

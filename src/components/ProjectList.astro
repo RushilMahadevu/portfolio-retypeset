@@ -1,0 +1,131 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import PinIcon from '@/assets/icons/pin-icon.svg'
+import PostDate from '@/components/PostDate.astro'
+import { defaultLocale } from '@/config'
+import { isHomePage } from '@/utils/page'
+
+type Project = CollectionEntry<'projects'> & {
+  remarkPluginFrontmatter: {
+    minutes: number
+  }
+}
+
+const { projects, lang, pinned = false } = Astro.props
+const isHome = isHomePage(Astro.url.pathname)
+
+export interface Props {
+  projects: Project[]
+  lang: string
+  pinned?: boolean
+}
+
+function getProjectPath(project: Project) {
+  const slug = project.data.abbrlink || project.id
+
+  if (lang === defaultLocale) {
+    return `/projects/${slug}/`
+  }
+
+  return `/${lang}/projects/${slug}/`
+}
+---
+
+<ul>
+  {projects.map(project => (
+    <li
+      class="mb-5.5"
+      lg={isHome ? 'mb-10' : ''}
+    >
+      {/* project title */}
+      <h3 class="inline transition-colors hover:c-primary">
+        <a
+          class="cjk:tracking-0.02em"
+          lg={isHome ? 'font-medium text-4.5' : ''}
+          href={getProjectPath(project)}
+          transition:name={`project-${project.data.abbrlink || project.id}${lang ? `-${lang}` : ''}`}
+          data-disable-theme-transition
+        >
+          {project.data.title}
+        </a>
+        {/* pinned icon */}
+        {pinned && (
+          <PinIcon
+            aria-hidden="true"
+            class="ml-0.25em inline-block aspect-square w-0.98em translate-y--0.1em lg:(w-1.05em translate-y--0.15em)"
+            fill="currentColor"
+          />
+        )}
+      </h3>
+
+      {/* mobile project time */}
+      <div
+        class="py-0.8 text-3.5 font-time lg:hidden"
+        transition:name={`time-${project.data.abbrlink || project.id}${lang ? `-${lang}` : ''}`}
+        data-disable-theme-transition
+      >
+        <PostDate
+          date={project.data.published}
+          minutes={project.remarkPluginFrontmatter.minutes}
+        />
+        {project.data.status && (
+          <span class="ml-2 text-3">
+            · {project.data.status.replace('-', ' ')}
+          </span>
+        )}
+      </div>
+
+      {/* desktop project time */}
+      <div class="hidden text-3.65 font-time lg:(ml-2.5 inline)">
+        <PostDate
+          date={project.data.published}
+          minutes={project.remarkPluginFrontmatter.minutes}
+        />
+        {project.data.status && (
+          <span class="ml-2">
+            · {project.data.status.replace('-', ' ')}
+          </span>
+        )}
+      </div>
+
+      {/* desktop project description */}
+      {isHome && (
+        <div
+          class="heti hidden"
+          lg="mt-2.25 block"
+        >
+          {/* Project image preview */}
+          {project.data.image && (
+            <div class="mb-3">
+              <img
+                src={project.data.image}
+                alt={`${project.data.title} preview`}
+                class="h-32 w-full rounded object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          )}
+          <p>{project.data.description}</p>
+          {(project.data.github || project.data.demo) && (
+            <p class="mt-1 text-3.5">
+              {project.data.github && (
+                <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="transition-colors hover:c-primary">
+                  GitHub
+                </a>
+              )}
+              {project.data.demo && (
+                <>
+                  {project.data.github && <span class="mx-1">·</span>}
+                  <a href={project.data.demo} target="_blank" rel="noopener noreferrer" class="transition-colors hover:c-primary">
+                    Demo
+                  </a>
+                </>
+              )}
+            </p>
+          )}
+        </div>
+      )}
+    </li>
+  ))}
+</ul>
