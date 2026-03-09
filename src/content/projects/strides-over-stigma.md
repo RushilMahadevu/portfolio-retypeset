@@ -1,5 +1,6 @@
 ---
-title: "Strides Over Stigma 🏃"
+title: "Strides Over Stigma"
+icon: "i-tabler-run"
 description: "Breaking mental health stigma through community running and physical activity"
 published: 2025-05-09
 tags:

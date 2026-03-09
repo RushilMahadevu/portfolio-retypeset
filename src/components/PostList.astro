@@ -41,13 +41,14 @@ function getPostPath(post: Post) {
       {/* post title */}
       <h3 class="inline transition-colors hover:c-primary">
         <a
-          class="cjk:tracking-0.02em"
-          lg={isHome ? 'font-medium text-4.5' : ''}
+          class="inline-flex items-center gap-2.5 cjk:tracking-0.02em"
+          lg={isHome ? 'text-4.5' : ''}
           href={getPostPath(post)}
           transition:name={`post-${post.data.abbrlink || post.id}${lang ? `-${lang}` : ''}`}
           data-disable-theme-transition
         >
-          {post.data.title}
+          {post.data.icon && <span class:list={[post.data.icon, 'w-1.1em h-1.1em inline-block shrink-0']} />}
+          <span class="font-serif">{post.data.title}</span>
         </a>
         {/* pinned icon */}
         {pinned && (
@@ -82,7 +83,7 @@ function getPostPath(post: Post) {
       {/* desktop post description */}
       {isHome && (
         <div
-          class="heti hidden"
+          class="heti hidden text-3.5 c-secondary/80 leading-2.1em font-italic lg:block"
           lg="mt-2.25 block"
         >
           <p>{getPostDescription(post, 'list')}</p>

@@ -1,5 +1,6 @@
 ---
-title: "The Stillness Project 🕊️"
+title: "The Stillness Project"
+icon: "i-tabler-feather"
 published: 2025-07-01
 description: "An interdisciplinary research project examining how cultural attitudes and individual psychological experiences of stillness and silence vary across diverse demographic groups."
 tags:

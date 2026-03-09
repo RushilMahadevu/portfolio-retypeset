@@ -1,5 +1,6 @@
 ---
-title: "Maze Architecture Framework 🏛️"
+title: "Maze Architecture Framework"
+icon: "i-tabler-building-bank"
 description: "Democratizing computer science education through interactive algorithm visualization and professional software architecture"
 published: 2024-12-15
 tags:

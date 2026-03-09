@@ -1,5 +1,6 @@
 ---
 title: "Welcome to My Portfolio"
+icon: "i-tabler-id"
 description: "An introduction to my personal portfolio and blog"
 published: 2025-08-09
 tags:

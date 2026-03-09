@@ -4,111 +4,97 @@ lang: en
 
 # About Rushil Mahadevu
 
-> *Strategic thinker • Technology enthusiast • Problem solver*
+> *Developer & Researcher | Building at the Intersection of AI, Science, and Education*
 
-**How can one person spark change that scales?**
-That question drives everything I do — from launching mental health initiatives to competing in national debate tournaments to building full-stack applications.
+Driven high school developer and researcher building at the intersection of AI, full-stack engineering, and education technology. Experienced in designing verifiable LLM systems, machine learning pipelines, and production-grade web platforms. Recognized for academic excellence and a self-directed approach to tackling complex, real-world problems through independent research and software.
+
+📄 [Download Resume (PDF)](/resume.pdf)
 
 ---
 
 ## 🎓 Education
 
-**Sage Ridge School** — Reno, Nevada
-*Graduation: Expected June 2028 | GPA: 4.0 (Unweighted)*
-**PSAT:** 1360/1400 — 720 Math (99th percentile)
+**Sage Ridge School** — Reno, NV  
+*College Prep, 2021–Present*  
+GPA: 4.0 (Unweighted)  
+Honors: Head of School's List (All years), Pillar Awards for Scholarship & Respect  
+Key Coursework: AP Computer Science A, AP Computer Science Principles, AP Precalculus, AP World History, Honors Biology
 
-**Advanced Coursework**
-| Type | Subjects |
-|------|----------|
-| **AP** | Computer Science A, Computer Science Principles, Precalculus, World History |
-| **Honors** | Biology, World Literature |
-| **Languages** | Spanish III |
-| **Arts** | Music Foundations |
+**Truckee Meadows Community College** — Biological Anthropology (Present)  
+Relevant Coursework: Biological Anthropology (ANTH 102) & Lab (ANTH 110L)  
+Key Skills: Comparative Primate Anatomy, Human Evolution, Genetics, Osteology
 
-**Academic Recognition**
-- 🌟 *Head of School's List* — Every academic year
-- 🏅 *Pillar Awards* — Respect & Scholarship
-- 🥇 *Valedictorian Honors* — AP CS Principles, Honors Algebra II, World History
-- 🎯 *National Recognition* — PSAT Math (Top 1% nationally)
+**Boston University | High School Honors Program** — Summer 2026  
+Selected via a competitive national application process for intensive, credit-bearing collegiate coursework
 
 ---
 
 ## 💼 Experience
 
-**Math & Reading Instructor** — Kumon Learning Center *(2024–2025)*
-- Delivered personalized instruction using the Kumon Method
-- Graded assignments and provided targeted feedback
-- Supported students across diverse ages and abilities
-- Strengthened communication, organization, and mentoring skills
+**Teaching Assistant** — Kumon Math and Reading Center *(June 2024 – Present)*  
+Deliver personalized math and reading instruction, focusing on the Kumon Method of self-learning and mastery.  
+Track student progress and provide feedback to improve accuracy and confidence in advanced mathematics.
 
 ---
 
-## 🚀 Leadership & Impact
+## 🚀 Projects
 
-**Founder — Strides Over Stigma** *(2024–Present)*
-- Created a Reno-based wellness initiative to reduce mental health stigma
-- Built a full-stack platform for community engagement
-- Integrated physical wellness with mental health awareness
+**Scorpio: Verifiable Physics Tutoring LMS** *(Nov 2025 – Present)*  
+Developed an AI-powered physics LMS with research-grade tutoring and immersive learning tools.  
+Submitted to the 2026 Davidson Fellows Scholarship.  
+Engineered for accurate, step-by-step tutoring and high reliability in scientific outputs.
 
-**National Debate Competitor** *(2024–Present)*
-- Achieved NSDA *Senior Level Rank* in just 2 tournaments (school record tie)
-- Represented school in regional and national competitions
+**NFTruth: AI-Powered NFT Authenticity Detection** *(June 2025 – Aug 2025)*  
+Built an AI-powered fraud detection system for NFT collections using Python and FastAPI.  
+Achieved 95%+ confidence ratings through ML by analyzing metadata, social signals, and transaction patterns.
 
-**Varsity Athlete** — Cross-Country & Track & Field *(2024–Present)*
-- Balanced rigorous academics with multi-sport varsity competition
-
-**Math Competition Representative** — Northern Nevada Math Organization *(2024–Present)*
-- Competed in advanced mathematics under time constraints
-- Selected annually for academic contests
+**Strides Over Stigma** *(May 2025 – Present)*  
+Founded a mental health and wellness initiative; developed a full-stack platform using TypeScript and React for event registration and community outreach.
 
 ---
 
-## 🛠️ Technical Skills
+## 🤝 Volunteer
 
-| Area | Tools & Technologies |
-|------|----------------------|
-| **Frontend** | HTML, CSS, JavaScript |
-| **Backend** | Firebase, Supabase |
-| **Tools** | Git, Version Control |
-| **Platforms** | Web Development, Database Management |
+**The Discovery | STEM Education & Operations Volunteer** *(Summer 2025)*  
+Dedicated 75+ volunteer hours to developing and facilitating interactive STEM curriculum, fostering a hands-on learning environment for diverse student groups.
 
----
-
-## 🏆 Achievements
-
-**Academic**
-| Award | Year(s) | Details |
-|-------|---------|---------|
-| *President's Education Award* | 2019, 2021 | U.S. Dept. of Education national distinction |
-| *Kumon Math Platinum* | 2018–2021 | 6× years above grade level |
-| *Valedictorian Honors* | 2023–2024 | Top academic performance in multiple subjects |
-
-**Competition**
-- 🎤 NSDA Senior Rank — fastest advancement in school history
-- 🧩 World Cube Association speedsolver — 3×3 PB: 18.11s
-- 📊 Multiple regional math competition appearances
+**American Red Cross | Regional Health & Safety Volunteer** *(Feb 2026 – Present)*  
+Manage volunteer profiles and support onboarding logistics for various events across the Northern Nevada region.
 
 ---
 
-## 🎯 Current Focus
+## 🛠️ Skills
 
-- **🌱 Sustainable Innovation** — Developing renewable energy tech startup concepts
-- **🤖 AI Research** — Exploring automation’s impact on traditional business models
-- **🚀 Career Development** — Seeking Summer 2025 opportunities in strategy consulting
-
----
-
-## 💭 Mission
-
-At the intersection of **business strategy**, **technology**, and **social impact**, my goal is to create solutions that deliver measurable value and lasting change.
-I want a career where **innovative ideas meet practical execution** to solve complex challenges.
+**Programming:** Python, TypeScript, JavaScript, Java, HTML/CSS  
+**Scientific Research:** Machine Learning, Statistical Modeling, Data Analysis, Experimental Design, Technical Writing  
+**Professional & Leadership:** Systems Thinking, Public Speaking, Mentoring, Scientific Method, Critical Thinking
 
 ---
 
-## 🤝 Connect
+## 🏆 Awards
 
-| Platform | Link |
-|----------|------|
-| 💼 **LinkedIn** | [rushil-mahadevu](https://www.linkedin.com/in/rushil-mahadevu-b2a86333a/) |
-| 💻 **GitHub** | [RushilMahadevu](https://github.com/RushilMahadevu) |
-| 📧 **Email** | [rushil.mahadevu@gmail.com](mailto:rushil.mahadevu@gmail.com) |
+- **National Honor Society** (2025)
+- **Valedictorian Honors** (2025) — 1st in AP CSP, Honors Algebra II, World History
+- **President's Education Award for Academic Excellence** (2025)
+- **Kumon Mathematics Platinum Award** (2019, 2021) — 6× recipient for years above grade level
+- **World Cube Association** (2024) — Ranked speedsolver, 3×3 PB: 18.11s
+
+---
+
+## 🌐 Languages
+
+**Spanish:** Intermediate
+
+---
+
+## 🎯 Interests
+
+**Extracurricular Activities:** Debate (Senior Level NSDA), Skiing, Cross-Country, Track & Field
+
+---
+
+## 📬 Contact
+
+- **Email:** [rushil.mahadevu@gmail.com](mailto:rushil.mahadevu@gmail.com)
+- **GitHub:** [RushilMahadevu](https://github.com/RushilMahadevu)
+- **LinkedIn:** [rushil-mahadevu](https://www.linkedin.com/in/rushil-mahadevu-b2a86333a/)

@@ -1,5 +1,6 @@
 ---
 title: "Why Stillness Matters to Me?"
+icon: "i-tabler-leaf"
 published: 2025-07-04
 description: "A reflection on the profound importance of stillness in our chaotic world and what we discover when we stop avoiding quiet moments"
 updated: ""

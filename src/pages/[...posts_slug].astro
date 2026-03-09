@@ -8,7 +8,7 @@ import BackButton from '@/components/Widgets/BackButton.astro'
 import TOC from '@/components/Widgets/TOC.astro'
 import { allLocales, defaultLocale, moreLocales } from '@/config'
 import Layout from '@/layouts/Layout.astro'
-import { checkPostSlugDuplication } from '@/utils/content'
+import { checkPostSlugDuplication, getAllTagsFromCategorized } from '@/utils/content'
 import { getPostDescription } from '@/utils/description'
 
 export async function getStaticPaths() {
@@ -112,10 +112,12 @@ const { Content, headings, remarkPluginFrontmatter } = await render(post)
       <!-- Title -->
       <h1 class="post-title">
         <span
+          class="inline-flex items-center gap-2.5 font-serif"
           transition:name={`post-${post.data.abbrlink || post.id}${lang ? `-${lang}` : ''}`}
           data-disable-theme-transition
         >
-          {post.data.title}
+          {post.data.icon && <span class:list={[post.data.icon, 'w-1.1em h-1.1em inline-block shrink-0']} />}
+          <span>{post.data.title}</span>
         </span>
       </h1>
     </div>
@@ -141,10 +143,10 @@ const { Content, headings, remarkPluginFrontmatter } = await render(post)
       <!-- Copyright -->
       <div id="post-copyright" />
       <!-- Tag List -->
-      {post.data.tags?.length > 0 && (
+      {getAllTagsFromCategorized(post.data.tags).length > 0 && (
         <div class="mt-12.6 uno-decorative-line" />
         <TagList
-          tags={post.data.tags}
+          tags={getAllTagsFromCategorized(post.data.tags)}
           lang={lang}
         />
       )}

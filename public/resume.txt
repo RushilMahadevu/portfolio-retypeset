@@ -1,0 +1,118 @@
+Rushil Mahadevu
+
+Developer & Researcher | Building at the Intersection of AI, Science, and Education
+Driven high school developer and researcher building at the intersection of AI, full-stack engineering, and education technology. Experienced in
+designing verifiable LLM systems, machine learning pipelines, and production-grade web platforms. Recognized for academic excellence and a selfdirected approach to tackling complex, real-world problems through independent research and software.
+rushil.mahadevu@gmail.com
+
+(775) 400-8961
+
+Reno, NV
+
+Website
+
+ Github
+
+ LinkedIn
+
+Education
+Sage Ridge School
+College Prep
+
+10th
+2515 Crossbow Ct, Reno, NV 89511 • 2021 - Present
+
+GPA: 4.0 (Unweighted)
+Honors: Head of School's List (All years), Pillar Awards for Scholarship & Respect.
+Key Coursework: AP Computer Science A, AP Computer Science Principles, AP Precalculus, AP World History, Honors Biology.
+Truckee Meadows Community College
+Biological Anthropology
+
+Present
+
+Relevant Coursework: Biological Anthropology (ANTH 102) & Biological Anthropology Lab (ANTH 110L).
+Key Skills: Comparative Primate Anatomy, Human Evolution, Genetics, and Osteology.
+Boston University | High School Honors Program
+
+Summer 2026
+
+Selected via a competitive national application process for intensive, credit-bearing collegiate coursework.
+
+Experience
+Kumon Math and Reading Center
+1111 Steamboat Pkwy Suite# 400, Reno, NV 89521
+Teaching Assistant
+June 2024 - Present
+Deliver personalized math and reading instruction, focusing on the Kumon Method of self-learning and mastery.
+Track student progress and provide feedback to improve accuracy and confidence in advanced mathematics.
+
+Projects
+Scorpio: Verifiable Physics Tutoring LMS
+November 2025 - Present
+Developed an AI-powered physics LMS with research-grade tutoring and immersive learning tools designed to foster breakthrough understanding.
+Submitted to the 2026 Davidson Fellows Scholarship.
+Engineered the system to provide accurate, step-by-step tutoring while maintaining high reliability in scientific outputs.
+NFTruth: AI-Powered NFT Authenticity Detection
+Built an AI-powered fraud detection system for NFT collections using Python and FastAPI.
+Achieved 95%+ confidence ratings through ML by analyzing metadata, social signals, and transaction patterns.
+
+June 2025 - August 2025
+
+Strides Over Stigma
+May 2025 - Present
+Founded a mental health and wellness initiative; developed a full-stack platform using TypeScript and React for event registration and community
+outreach.
+
+Volunteer
+The Discovery | STEM Education & Operations Volunteer
+Summer 2025
+490 S Center St, Reno, NV 89501
+Dedicated 75+ volunteer hours to developing and facilitating interactive STEM curriculum, fostering a hands-on learning environment for diverse
+student groups.
+American Red Cross | Regional Health & Safety Volunteer
+
+February 2026 - Present
+
+Manage volunteer profiles and support onboarding logistics for various events across the Northern Nevada region.
+
+Skills
+ Programming
+
+Python, Typescript, Javascript, Java, HTML/CSS
+
+ Scientific Research
+
+Machine Learning, Statistical Modeling, Data Analysis, Experimental Design, Technical Writing
+
+ Professional & Leadership
+
+Systems Thinking, Public Speaking, Mentoring, Scientific Method, Critical Thinking
+
+Awards
+National Honor Society
+Valedictorian Honors
+Awarded for ranking 1st in AP CSP, Honors Algebra II, and World History.
+President's Education Award for Academic Excellence
+Kumon Mathematics Platinum Award
+6x Recipient for performing years above grade level (Platinum Award)
+World Cube Association
+Ranked speedsolver with an 18.11s personal record.
+
+Languages
+
+Spanish
+Intermediate
+
+Interests
+
+ Extracurricular Activities
+
+Debate (Senior Level NSDA), Skiing, Cross-Country, Track & Field
+
+2025
+2025
+2019, 2021
+2014-2022
+2024
+
+

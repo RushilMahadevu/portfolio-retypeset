@@ -11,12 +11,12 @@
 
 /* Customized Post Title */
 .heti .post-title {
-  --at-apply: 'mb-2 mt-0 text-8.6 font-bold lg:text-9';
+  --at-apply: 'mb-2 mt-0 text-8.6 lg:text-9';
 }
 
 /* Headings */
 .heti :where(h1, h2, h3, h4, h5, h6) {
-  --at-apply: 'mb-4 mt-1.5em font-semibold';
+  --at-apply: 'mb-4 mt-1.5em font-medium';
 }
 .heti :where(h1) {
   --at-apply: 'text-7 c-primary';
@@ -50,7 +50,7 @@
 
 /* Links */
 .heti :where(a:not(.no-heti):not(.no-heti *)) {
-  --at-apply: 'font-semibold tracking-0 underline underline-0.075em decoration-secondary/80 underline-offset-0.1em cjk:break-all';
+  --at-apply: 'font-medium tracking-0 underline underline-0.075em decoration-secondary/80 underline-offset-0.1em cjk:break-all';
   --at-apply: 'transition-colors ease-out hover:(c-primary decoration-primary/80) lg:underline-0.1em';
 }
 
@@ -257,7 +257,7 @@ html.dark .heti :where(u) {
 
 /* Bold */
 .heti :where(b, strong) {
-  --at-apply: 'font-semibold';
+  --at-apply: 'font-medium';
 }
 
 /* Italic */

@@ -1,5 +1,6 @@
 ---
 title: "The Weight of Noise"
+icon: "i-tabler-volume-3"
 published: 2025-08-13
 description: "A reflection on how constant mental static shapes us without permission and why stepping into stillness reveals the voice we've been missing"
 updated: ""

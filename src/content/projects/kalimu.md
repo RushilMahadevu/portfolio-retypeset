@@ -1,5 +1,6 @@
 ---
-title: "Kalimu 🔮"
+title: "Kalimu"
+icon: "i-tabler-sparkles"
 description: "Breaking the one-size-fits-all mold in education by creating personalized, adaptive learning paths for every student"
 published: 2024-10-11
 tags:

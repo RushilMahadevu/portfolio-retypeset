@@ -1,5 +1,6 @@
 ---
 title: "Breaking the Silence: How We Build Connection in Mental Health"
+icon: "i-tabler-message-2"
 published: 2025-05-15
 description: "Exploring how genuine conversation and community action can transform our approach to mental health stigma"
 updated: ""

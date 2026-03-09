@@ -40,13 +40,14 @@ function getProjectPath(project: Project) {
       {/* project title */}
       <h3 class="inline transition-colors hover:c-primary">
         <a
-          class="cjk:tracking-0.02em"
-          lg={isHome ? 'font-medium text-4.5' : ''}
+          class="inline-flex items-center gap-2.5 cjk:tracking-0.02em"
+          lg={isHome ? 'text-4.5' : ''}
           href={getProjectPath(project)}
           transition:name={`project-${project.data.abbrlink || project.id}${lang ? `-${lang}` : ''}`}
           data-disable-theme-transition
         >
-          {project.data.title}
+          {project.data.icon && <span class:list={[project.data.icon, 'w-1.1em h-1.1em inline-block shrink-0']} />}
+          <span class="font-serif">{project.data.title}</span>
         </a>
         {/* pinned icon */}
         {pinned && (

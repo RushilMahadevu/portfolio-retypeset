@@ -20,6 +20,7 @@
     "@astrojs/mdx": "^4.3.3",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/sitemap": "^3.4.2",
+    "@tabler/icons": "^3.40.0",
     "@waline/client": "^3.6.0",
     "astro": "^5.12.8",
     "astro-compress": "^2.3.8",
@@ -45,6 +46,8 @@
   "devDependencies": {
     "@antfu/eslint-config": "^5.2.0",
     "@astrojs/check": "^0.9.4",
+    "@iconify-json/lucide": "^1.2.96",
+    "@iconify-json/tabler": "^1.2.30",
     "@lokesh.dhakar/quantize": "^1.4.0",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^24.2.0",

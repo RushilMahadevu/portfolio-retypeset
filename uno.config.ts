@@ -2,6 +2,7 @@ import type { Preset } from 'unocss'
 import {
   defineConfig,
   presetAttributify,
+  presetIcons,
   presetWind3,
   transformerDirectives,
   transformerVariantGroup,
@@ -15,6 +16,12 @@ export default defineConfig({
   presets: [
     presetWind3(),
     presetAttributify(),
+    presetIcons({
+      extraProperties: {
+        'display': 'inline-block',
+        'vertical-align': 'middle',
+      },
+    }),
     presetTheme({
       theme: {
         dark: {
@@ -71,5 +78,20 @@ export default defineConfig({
   transformers: [
     transformerDirectives(),
     transformerVariantGroup(),
+  ],
+  safelist: [
+    'i-tabler-sparkles',
+    'i-tabler-building-bank',
+    'i-tabler-trending-up',
+    'i-tabler-telescope',
+    'i-tabler-run',
+    'i-tabler-feather',
+    'i-tabler-message-2',
+    'i-tabler-volume-3',
+    'i-tabler-id',
+    'i-tabler-leaf',
+    'i-tabler-atom',
+    'i-tabler-shield-check',
+    'i-tabler-heart',
   ],
 })
