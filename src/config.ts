@@ -6,7 +6,7 @@ export const themeConfig: ThemeConfig = {
     // site title
     title: 'Rushil Mahadevu',
     // site subtitle
-    subtitle: 'class of 2028',
+    subtitle: 'class of 2028 · developer/researcher',
     // site description
     description: 'Personal portfolio and blog of Rushil Mahadevu.',
     // use i18n title/subtitle/description from src/i18n/ui.ts instead of static ones above
@@ -170,10 +170,10 @@ export const themeConfig: ThemeConfig = {
         name: 'Email',
         url: 'mailto:rushil.mahadevu@gmail.com',
       },
-      // {
-      //   name: 'LinkedIn',
-      //   url: 'https://linkedin.com/in/rushilmahadevu',
-      // },
+      {
+        name: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/rushil-mahadevu-b2a86333a/',
+      },
     ],
     // year of website start
     startYear: 2025,

@@ -3,7 +3,6 @@ import type { CollectionEntry } from 'astro:content'
 import PinIcon from '@/assets/icons/pin-icon.svg'
 import PostDate from '@/components/PostDate.astro'
 import { defaultLocale } from '@/config'
-import { isHomePage } from '@/utils/page'
 
 type Project = CollectionEntry<'projects'> & {
   remarkPluginFrontmatter: {
@@ -11,13 +10,14 @@ type Project = CollectionEntry<'projects'> & {
   }
 }
 
-const { projects, lang, pinned = false } = Astro.props
-const isHome = isHomePage(Astro.url.pathname)
+const { projects, lang, pinned = false, columns = 1 } = Astro.props
+const isTwoCol = columns === 2
 
 export interface Props {
   projects: Project[]
   lang: string
   pinned?: boolean
+  columns?: 1 | 2
 }
 
 function getProjectPath(project: Project) {
@@ -31,17 +31,19 @@ function getProjectPath(project: Project) {
 }
 ---
 
-<ul>
+<ul class:list={[
+  isTwoCol ? 'grid grid-cols-2 gap-x-6 gap-y-10' : '',
+]}
+>
   {projects.map(project => (
-    <li
-      class="mb-5.5"
-      lg={isHome ? 'mb-10' : ''}
+    <li class:list={[
+      isTwoCol ? '' : 'mb-10',
+    ]}
     >
       {/* project title */}
       <h3 class="inline transition-colors hover:c-primary">
         <a
-          class="inline-flex items-center gap-2.5 cjk:tracking-0.02em"
-          lg={isHome ? 'text-4.5' : ''}
+          class="inline-flex items-center gap-2.5 text-4.5 cjk:tracking-0.02em"
           href={getProjectPath(project)}
           transition:name={`project-${project.data.abbrlink || project.id}${lang ? `-${lang}` : ''}`}
           data-disable-theme-transition
@@ -59,9 +61,9 @@ function getProjectPath(project: Project) {
         )}
       </h3>
 
-      {/* mobile project time */}
+      {/* project time + status */}
       <div
-        class="py-0.8 text-3.5 font-time lg:hidden"
+        class="py-0.8 text-3.5 font-time"
         transition:name={`time-${project.data.abbrlink || project.id}${lang ? `-${lang}` : ''}`}
         data-disable-theme-transition
       >
@@ -70,62 +72,59 @@ function getProjectPath(project: Project) {
           minutes={project.remarkPluginFrontmatter.minutes}
         />
         {project.data.status && (
-          <span class="ml-2 text-3">
-            · {project.data.status.replace('-', ' ')}
+          <span class="ml-2 inline-flex items-center gap-1 text-3">
+            ·
+            <span
+              class:list={[
+                'inline-block w-1.5 h-1.5 rounded-full',
+                project.data.status === 'completed' ? 'bg-green-500' : 'bg-amber-400',
+              ]}
+            />
+            {project.data.status.replace('-', ' ')}
           </span>
         )}
       </div>
 
-      {/* desktop project time */}
-      <div class="hidden text-3.65 font-time lg:(ml-2.5 inline)">
-        <PostDate
-          date={project.data.published}
-          minutes={project.remarkPluginFrontmatter.minutes}
-        />
-        {project.data.status && (
-          <span class="ml-2">
-            · {project.data.status.replace('-', ' ')}
-          </span>
-        )}
-      </div>
+      {/* Project image — always shown, big */}
+      {project.data.image && (
+        <a href={getProjectPath(project)} class="mb-3 mt-2 block overflow-hidden rounded-lg">
+          <img
+            src={project.data.image}
+            alt={`${project.data.title} preview`}
+            class:list={[
+              'w-full object-cover transition-transform duration-300 hover:scale-102',
+              isTwoCol ? 'aspect-[4/3]' : 'h-64 lg:h-[28rem]',
+            ]}
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+      )}
 
-      {/* desktop project description */}
-      {isHome && (
-        <div
-          class="heti hidden"
-          lg="mt-2.25 block"
-        >
-          {/* Project image preview */}
-          {project.data.image && (
-            <div class="mb-3">
-              <img
-                src={project.data.image}
-                alt={`${project.data.title} preview`}
-                class="h-32 w-full rounded object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+      {/* description — always shown */}
+      {project.data.description && (
+        <p class="mt-1 text-3.5 c-secondary">
+          {project.data.description}
+        </p>
+      )}
+
+      {/* links */}
+      {(project.data.github || project.data.demo) && (
+        <p class="mt-1.5 text-3.5">
+          {project.data.github && (
+            <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="transition-colors hover:c-primary">
+              GitHub
+            </a>
           )}
-          <p>{project.data.description}</p>
-          {(project.data.github || project.data.demo) && (
-            <p class="mt-1 text-3.5">
-              {project.data.github && (
-                <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="transition-colors hover:c-primary">
-                  GitHub
-                </a>
-              )}
-              {project.data.demo && (
-                <>
-                  {project.data.github && <span class="mx-1">·</span>}
-                  <a href={project.data.demo} target="_blank" rel="noopener noreferrer" class="transition-colors hover:c-primary">
-                    Demo
-                  </a>
-                </>
-              )}
-            </p>
+          {project.data.demo && (
+            <>
+              {project.data.github && <span class="mx-1">·</span>}
+              <a href={project.data.demo} target="_blank" rel="noopener noreferrer" class="transition-colors hover:c-primary">
+                Demo
+              </a>
+            </>
           )}
-        </div>
+        </p>
       )}
     </li>
   ))}

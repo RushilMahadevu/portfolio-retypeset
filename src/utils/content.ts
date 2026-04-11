@@ -237,6 +237,42 @@ async function _getPostsByTag(tag: string, lang?: string) {
 export const getPostsByTag = memoize(_getPostsByTag)
 
 /**
+ * Get related posts based on shared tags
+ *
+ * @param currentPost The current post to find related posts for
+ * @param maxCount Maximum number of related posts to return (default: 3)
+ * @param lang The language code to filter by, defaults to site's default language
+ * @returns Array of related posts sorted by number of shared tags
+ */
+async function _getRelatedPosts(currentPost: Post, maxCount: number = 3, lang?: string): Promise<Post[]> {
+  const allPosts = await getPosts(lang)
+  const currentTags = getAllTagsFromCategorized(currentPost.data.tags)
+
+  if (currentTags.length === 0) {
+    // If no tags, just return the latest posts excluding current
+    return allPosts
+      .filter(post => post.id !== currentPost.id)
+      .slice(0, maxCount)
+  }
+
+  const relatedPosts = allPosts
+    .filter(post => post.id !== currentPost.id)
+    .map((post) => {
+      const postTags = getAllTagsFromCategorized(post.data.tags)
+      const sharedTags = postTags.filter(tag => currentTags.includes(tag))
+      return { post, sharedTagsCount: sharedTags.length }
+    })
+    .filter(item => item.sharedTagsCount > 0)
+    .sort((a, b) => b.sharedTagsCount - a.sharedTagsCount || b.post.data.published.getTime() - a.post.data.published.getTime())
+    .map(item => item.post)
+    .slice(0, maxCount)
+
+  return relatedPosts
+}
+
+export const getRelatedPosts = memoize(_getRelatedPosts)
+
+/**
  * Check which languages support a specific tag
  *
  * @param tag The tag name to check language support for

@@ -1,0 +1,52 @@
+---
+import type { Post } from '@/utils/content'
+import { defaultLocale } from '@/config'
+import { getRelatedPosts } from '@/utils/content'
+
+export interface Props {
+  currentPost: Post
+  lang: string
+  maxCount?: number
+}
+
+const { currentPost, lang, maxCount = 2 } = Astro.props
+const relatedPosts = await getRelatedPosts(currentPost, maxCount, lang)
+
+function getPostPath(post: Post) {
+  const slug = post.data.abbrlink || post.id
+  if (lang === defaultLocale) {
+    return `/posts/${slug}/`
+  }
+  return `/${lang}/posts/${slug}/`
+}
+
+if (relatedPosts.length === 0)
+return null
+---
+
+<div class="mt-16 border-t border-primary/20 border-dashed pt-8">
+  <h2 class="mb-6 flex items-center gap-2 text-xl font-bold">
+    <span class="i-lucide-sparkles h-5 w-5 text-primary"></span>
+    {lang === 'zh' || lang === 'zh-tw' ? '相关文章' : 'Related Posts'}
+  </h2>
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+    {relatedPosts.map(post => (
+      <a
+        href={getPostPath(post)}
+        class="group flex flex-col border border-transparent rounded-lg bg-primary/5 p-4 transition-all duration-300 hover:border-primary/20 hover:bg-primary/10"
+      >
+        <div class="flex items-start gap-3">
+          {post.data.icon && <span class:list={[post.data.icon, 'w-5 h-5 mt-1 shrink-0 text-primary/80 group-hover:text-primary transition-colors']} />}
+          <div>
+            <h3 class="line-clamp-2 font-medium transition-colors group-hover:text-primary">
+              {post.data.title}
+            </h3>
+            <p class="line-clamp-2 mt-2 text-sm italic op-60">
+              {post.data.published.toLocaleDateString(lang, { year: 'numeric', month: 'short', day: 'numeric' })}
+            </p>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+</div>

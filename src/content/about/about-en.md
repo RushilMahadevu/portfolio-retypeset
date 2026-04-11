@@ -4,62 +4,69 @@ lang: en
 
 # About Rushil Mahadevu
 
+<img src="/pfp.jpg" alt="Rushil Mahadevu" width="150" height="150" style="border-radius: 50%; border: 2px solid var(--un-preset-theme-colors-primary); margin-bottom: 1.5rem;" />
+
 > *Developer & Researcher | Building at the Intersection of AI, Science, and Education*
 
 Driven high school developer and researcher building at the intersection of AI, full-stack engineering, and education technology. Experienced in designing verifiable LLM systems, machine learning pipelines, and production-grade web platforms. Recognized for academic excellence and a self-directed approach to tackling complex, real-world problems through independent research and software.
 
-📄 [Download Resume (PDF)](/resume.pdf)
+[Resume (PDF)](/resume.pdf) · [Email](mailto:rushil.mahadevu@gmail.com) · [GitHub](https://github.com/RushilMahadevu) · [LinkedIn](https://www.linkedin.com/in/rushil-mahadevu-b2a86333a/)
 
 ---
 
 ## 🎓 Education
 
 **Sage Ridge School** — Reno, NV  
-*College Prep, 2021–Present*  
-GPA: 4.0 (Unweighted)  
-Honors: Head of School's List (All years), Pillar Awards for Scholarship & Respect  
-Key Coursework: AP Computer Science A, AP Computer Science Principles, AP Precalculus, AP World History, Honors Biology
+*College Prep, 10th Grade (2021 – Present)*  
+**GPA: 4.0 (Unweighted)**  
+**Honors:** Head of School's List (All years), Pillar Awards for Scholarship & Respect.  
+**Key Coursework:** AP Computer Science A, AP Computer Science Principles, AP Precalculus, AP World History, Honors Biology.
 
-**Truckee Meadows Community College** — Biological Anthropology (Present)  
-Relevant Coursework: Biological Anthropology (ANTH 102) & Lab (ANTH 110L)  
-Key Skills: Comparative Primate Anatomy, Human Evolution, Genetics, Osteology
+**Truckee Meadows Community College** *(Present)*  
+*Biological Anthropology*  
+Relevant Coursework: Biological Anthropology (ANTH 102) & Lab (ANTH 110L).  
+Key Skills: Comparative Primate Anatomy, Human Evolution, Genetics, and Osteology.
 
-**Boston University | High School Honors Program** — Summer 2026  
-Selected via a competitive national application process for intensive, credit-bearing collegiate coursework
+**Boston University** — *High School Honors Program (Summer 2026)*  
+Selected via a competitive national application process for intensive, credit-bearing collegiate coursework.
 
 ---
 
 ## 💼 Experience
 
-**Teaching Assistant** — Kumon Math and Reading Center *(June 2024 – Present)*  
-Deliver personalized math and reading instruction, focusing on the Kumon Method of self-learning and mastery.  
-Track student progress and provide feedback to improve accuracy and confidence in advanced mathematics.
+**Teaching Assistant** — *Kumon Math and Reading Center (June 2024 – Present)*  
+- Deliver personalized math and reading instruction, focusing on the Kumon Method of self-learning and mastery.  
+- Track student progress and provide feedback to improve accuracy and confidence in advanced mathematics.
 
 ---
 
 ## 🚀 Projects
 
 **Scorpio: Verifiable Physics Tutoring LMS** *(Nov 2025 – Present)*  
-Developed an AI-powered physics LMS with research-grade tutoring and immersive learning tools.  
-Submitted to the 2026 Davidson Fellows Scholarship.  
-Engineered for accurate, step-by-step tutoring and high reliability in scientific outputs.
+- Developed an AI-powered physics LMS with research-grade tutoring and immersive learning tools designed to foster breakthrough understanding.  
+- Submitted to the 2026 Davidson Fellows Scholarship.  
+- Engineered the system to provide accurate, step-by-step tutoring while maintaining high reliability in scientific outputs.
 
 **NFTruth: AI-Powered NFT Authenticity Detection** *(June 2025 – Aug 2025)*  
-Built an AI-powered fraud detection system for NFT collections using Python and FastAPI.  
-Achieved 95%+ confidence ratings through ML by analyzing metadata, social signals, and transaction patterns.
+- Built an AI-powered fraud detection system for NFT collections using Python and FastAPI.  
+- Achieved 95%+ confidence ratings through ML by analyzing metadata, social signals, and transaction patterns.
 
 **Strides Over Stigma** *(May 2025 – Present)*  
-Founded a mental health and wellness initiative; developed a full-stack platform using TypeScript and React for event registration and community outreach.
+- Founded a mental health and wellness initiative.
+- Developed a full-stack platform using TypeScript and React for event registration and community outreach.
 
 ---
 
 ## 🤝 Volunteer
 
-**The Discovery | STEM Education & Operations Volunteer** *(Summer 2025)*  
+**The Discovery** — *STEM Education & Operations Volunteer (Summer 2025)*  
 Dedicated 75+ volunteer hours to developing and facilitating interactive STEM curriculum, fostering a hands-on learning environment for diverse student groups.
 
-**American Red Cross | Regional Health & Safety Volunteer** *(Feb 2026 – Present)*  
+**American Red Cross** — *Regional Health & Safety Volunteer (Feb 2026 – Present)*  
 Manage volunteer profiles and support onboarding logistics for various events across the Northern Nevada region.
+
+---
+
 
 ---
 

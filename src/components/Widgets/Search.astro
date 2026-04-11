@@ -1,0 +1,85 @@
+---
+interface Props {
+  lang: string
+}
+
+const { lang } = Astro.props;
+---
+
+<button
+  id="search-trigger"
+  aria-label="Search"
+  class="flex items-center gap-2 rounded-lg p-2 transition-colors hover:bg-primary/10"
+>
+  <span class="i-lucide-search h-5 w-5"></span>
+</button>
+
+<dialog id="search-dialog" class="max-w-2xl w-full rounded-xl border-none bg-transparent p-4 shadow-2xl backdrop:bg-black/50 backdrop:blur-sm">
+  <div class="max-h-[80vh] overflow-y-auto border border-primary/20 rounded-xl bg-background p-6">
+    <div class="mb-6 flex items-center justify-between">
+      <h2 class="text-xl font-bold font-serif">{lang === 'zh' || lang === 'zh-tw' ? '搜索' : 'Search'}</h2>
+      <button id="close-search" class="rounded-full p-1 transition-colors hover:bg-primary/10">
+        <span class="i-lucide-x h-6 w-6"></span>
+      </button>
+    </div>
+    <div id="pagefind-search"></div>
+  </div>
+</dialog>
+
+<script>
+// @ts-expect-error - @pagefind/default-ui has no type declarations
+import { PagefindUI } from '@pagefind/default-ui'
+import '@pagefind/default-ui/css/ui.css'
+
+function initSearch() {
+  const trigger = document.getElementById('search-trigger')
+  const dialog = document.getElementById('search-dialog') as HTMLDialogElement
+  const closeBtn = document.getElementById('close-search')
+
+  if (!trigger || !dialog || !closeBtn)
+    return
+
+  trigger.onclick = () => dialog.showModal()
+  closeBtn.onclick = () => dialog.close()
+
+  // Close on click outside
+  dialog.onclick = (e) => {
+    if (e.target === dialog)
+      dialog.close()
+  }
+
+  // Initialize Pagefind UI only once
+  const searchContainer = document.getElementById('pagefind-search')
+  if (searchContainer && !searchContainer.innerHTML) {
+    const _pf = new PagefindUI({
+      element: '#pagefind-search',
+      showSubResults: true,
+      translations: {
+        placeholder: 'Search posts, projects...',
+      },
+    })
+  }
+}
+
+document.addEventListener('astro:page-load', initSearch)
+initSearch()
+</script>
+
+<style is:global>
+  :root {
+    --pagefind-ui-primary: var(--primary-color, #eab308);
+    --pagefind-ui-text: var(--text-color, inherit);
+    --pagefind-ui-background: transparent;
+    --pagefind-ui-border: rgba(var(--primary-rgb), 0.2);
+    --pagefind-ui-tag: #eab308;
+  }
+
+  #pagefind-search .pagefind-ui__result-link {
+    color: var(--primary-color) !important;
+    font-weight: 600;
+  }
+
+  #pagefind-search .pagefind-ui__result-thumb {
+    border-radius: 8px;
+  }
+</style>

@@ -1,0 +1,34 @@
+---
+---
+<div class="surface-grid pointer-events-none fixed inset-0 overflow-hidden -z-50"></div>
+
+<style>
+  .surface-grid {
+    --grid-size: 40px;
+    --grid-color: oklch(50% 0 0 / 0.05); /* Very subtle default */
+    background-image:
+      linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+    animation: grid-fade-in 1.5s ease-out forwards;
+  }
+
+  :global(.dark) .surface-grid {
+    --grid-color: oklch(50% 0 0 / 0.1);
+  }
+
+  @keyframes grid-fade-in {
+    from {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Add a subtle mouse follow effect if possible, but keep it clean */
+  /* For now, just a static subtle grid with a nice fade-in */
+</style>

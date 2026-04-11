@@ -1,39 +1,57 @@
 ---
-title: "Building Scorpio: AI Physics Tutoring for Real Understanding"
+title: "Building Scorpio: Verifiable AI Physics Tutoring at Scale"
 icon: "i-tabler-atom"
 published: 2025-11-20
-description: "How I designed and built Scorpio, an AI-powered physics LMS focused on verifiable, step-by-step learning."
+description: "An deep dive into the 4-layer constraint architecture and pedagogical engineering behind Scorpio."
 tags:
-  topics: ["ai", "education", "project"]
+  topics: ["ai", "education", "engineering", "physics"]
   projects: ["scorpio"]
-  types: ["project"]
+  types: ["technical"]
 pin: 0
 toc: true
 ---
 
-# Building Scorpio: AI Physics Tutoring for Real Understanding
+# Building Scorpio: Verifiable Physics Tutoring
 
-Physics is hard. Not just because of the math, but because real understanding requires more than memorizing formulas—it demands intuition, step-by-step reasoning, and the ability to connect concepts across problems. That's why I built **Scorpio**, an AI-powered physics learning management system (LMS) designed to deliver research-grade tutoring and immersive learning tools.
+Physics is not just a collection of formulas; it is a framework for understanding the universe. However, for many students, that framework is obscured by "answer-seeking" behavior. When I set out to build **Scorpio**, my goal wasn't to build another "AI Homework Helper." I wanted to build a **Verifiable Physics Tutoring LMS** that forces students to think, while ensuring every interaction is grounded in scientific truth.
 
-## Why Scorpio?
+## The Problem: The "Hallucination" Gap in Education
 
-I wanted to create a platform that didn't just give answers, but actually taught the process. Too many online tools focus on speed or shortcuts. Scorpio is different: every solution is broken down, verified, and explained in a way that builds lasting understanding.
+Generic LLMs are dangerous in a physics context. They prioritize plausibility over correctness, often "hallucinating" derivations or skipping crucial unit conversions. In a learning environment, a wrong step is more than just an error—it’s a pedagogical failure.
 
-## Engineering for Reliability
+To solve this, I moved away from simple prompting and engineered a **4-Layer Constraint Architecture**.
 
-The hardest part was ensuring the AI's outputs were not just plausible, but scientifically reliable. I spent months designing a pipeline that checks every step, flags inconsistencies, and encourages students to question results. The system isn't just a tutor—it's a partner in critical thinking.
+## Engineering for Pedagogical Integrity
 
-## Impact and Recognition
+The core of Scorpio is a system of "Hard Constraints" that the AI must satisfy before any output reaches the student.
 
-Scorpio was submitted to the 2026 Davidson Fellows Scholarship and is already being piloted in small study groups. Early feedback shows students feel more confident tackling complex problems, and teachers appreciate the transparency of the AI's reasoning.
+### 🛡️ The Layered Defense
+1.  **Domain Constraint:** Filters out non-physics queries to keep the student focused.
+2.  **Pedagogical (Socratic) Constraint:** This is the most critical layer. It programmatically prevents the AI from providing direct answers. Instead, it must identify the student's specific misconception and offer a targeted hint.
+3.  **Notation & Unit Constraint:** Mandates strict adherence to SI units and standard LaTeX formatting for all mathematical expressions.
+4.  **Composite Logic:** A final verification pass that ensures the response is consistent with the current problem state stored in our Firestore database.
 
-## What I Learned
+## Technical Implementation: Real-Time & Physics-First
 
-Building Scorpio taught me that the best educational technology doesn't replace teachers or students—it empowers them. The real breakthrough isn't in the AI itself, but in how it helps people learn to think like scientists.
+The frontend isn't just a shell—it's an interactive laboratory.
+
+*   **Real-Time Sync:** Using Firebase's snapshot listeners, student progress and AI "thought chains" are synced across sessions with zero perceived latency.
+*   **Mathematical Precision:** We integrated a custom KaTeX rendering engine that handles complex multi-line derivations. I also built a **Visual Math Builder** to help students construct equations without needing to learn raw LaTeX.
+*   **Space-Themed UX:** To reduce "physics anxiety," I designed a high-performance "glassmorphic" interface. It uses Framer Motion for physics-based UI interactions, mirroring the concepts being taught.
+
+## Impact & The Path to Davidson Fellows
+
+Scorpio was submitted to the **2026 Davidson Fellows Scholarship**. In initial pilot groups at Sage Ridge, we saw a marked shift: students stopped asking "What is the answer?" and started asking "Why does this force vector change?" 
+
+The system tracks **Rule Adherence %** and **Response Quality metrics**, allowing us to verify that our AI constraints are actually working.
+
+## Reflections on AI Engineering
+
+Building Scorpio taught me that the future of AI in education isn't about *more* intelligence—it's about *governed* intelligence. By setting strict boundaries, we actually create more freedom for the student to explore, fail safely, and eventually, achieve a breakthrough in understanding.
 
 ---
 
 **Related Project:**
 
 **Scorpio** — AI Physics Tutoring LMS  
-[View Project Details →](/projects/scorpio/)
+[Explore the Architecture →](/projects/scorpio/)

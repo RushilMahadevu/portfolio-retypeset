@@ -45,7 +45,6 @@ const nextUrl = isTag
     >
       <LanguageSwitcherIcon
         aria-hidden="true"
-        fill="currentColor"
       />
     </a>
   )}
@@ -58,7 +57,6 @@ const nextUrl = isTag
   >
     <ThemeToggleIcon
       aria-hidden="true"
-      fill="currentColor"
     />
   </button>
 </div>
@@ -74,6 +72,14 @@ const nextUrl = isTag
 // Apply theme changes
 function applyTheme(isDark) {
   document.documentElement.classList.toggle('dark', isDark)
+
+  // Update icons
+  const sunIcon = document.querySelector('.sun-icon')
+  const moonIcon = document.querySelector('.moon-icon')
+  if (sunIcon && moonIcon) {
+    sunIcon.style.display = isDark ? 'none' : 'block'
+    moonIcon.style.display = isDark ? 'block' : 'none'
+  }
 
   // Update meta theme-color tag
   const metaThemeColor = document.head.querySelector('meta[name="theme-color"]')

@@ -1,0 +1,52 @@
+---
+---
+
+<div id="reading-progress-container" class="pointer-events-none fixed left-0 top-0 z-50 h-1 w-full op-0 transition-opacity duration-300">
+  <div id="reading-progress-bar" class="h-full w-0 bg-primary transition-all duration-100 ease-out"></div>
+</div>
+
+<script>
+function updateProgress() {
+  const bar = document.getElementById('reading-progress-bar')
+  const container = document.getElementById('reading-progress-container')
+  if (!bar || !container)
+    return
+
+  const winScroll = document.documentElement.scrollTop || document.body.scrollTop
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+
+  // Only show if there's enough content to scroll
+  if (height < 200) {
+    container.classList.add('op-0')
+    return
+  }
+
+  const scrolled = (winScroll / height) * 100
+  bar.style.width = `${scrolled}%`
+
+  if (winScroll > 100) {
+    container.classList.remove('op-0')
+  }
+  else {
+    container.classList.add('op-0')
+  }
+}
+
+// Handle Astro view transitions
+document.addEventListener('astro:page-load', () => {
+  window.addEventListener('scroll', updateProgress)
+  updateProgress()
+})
+
+// Initial load
+window.addEventListener('scroll', updateProgress)
+updateProgress()
+</script>
+
+<style>
+  #reading-progress-bar {
+    /* Use a gradient or a solid color from the theme if available */
+    /* boxShadow: 0 0 8px var(--primary-color); */
+    box-shadow: 0 0 10px rgba(var(--primary-rgb, 234, 179, 8), 0.5);
+  }
+</style>

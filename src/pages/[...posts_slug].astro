@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import { getCollection, render } from 'astro:content'
 import Comment from '@/components/Comment/Index.astro'
 import PostDate from '@/components/PostDate.astro'
+import RelatedPosts from '@/components/RelatedPosts.astro'
 import TagList from '@/components/TagList.astro'
 import BackButton from '@/components/Widgets/BackButton.astro'
 import TOC from '@/components/Widgets/TOC.astro'
@@ -150,6 +151,8 @@ const { Content, headings, remarkPluginFrontmatter } = await render(post)
           lang={lang}
         />
       )}
+      <!-- Related Posts -->
+      <RelatedPosts currentPost={{ ...post, remarkPluginFrontmatter }} lang={lang} />
       <!-- Comment -->
       <Comment />
     </div>
